@@ -1,0 +1,33 @@
+{
+  "name": "shery-boilerplate-server",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node ./build/main.js",
+    "dev": "backpack dev",
+    "build": "backpack build",
+    "postinstall": "backpack build",
+    "production": "backpack build && node ./build/main.js --production"
+  },
+  "dependencies": {
+    "backpack-core": "^0.4.2",
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.17.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "formidable": "^1.1.1",
+    "hls-server": "^1.5.0",
+    "jsonwebtoken": "^8.1.0",
+    "lodash": "^4.17.4",
+    "mongoose": "^4.11.6",
+    "mongoose-timestamp": "^0.6.0",
+    "nodeify": "^1.0.1",
+    "path": "^0.12.7",
+    "shery-logger": "^0.1.0",
+    "validator": "^9.2.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.8.2"
+  }
+}
