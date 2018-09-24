@@ -77,8 +77,8 @@ module.exports = __webpack_require__(29);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__sensitive_Hash__ = __webpack_require__(30);
 
 
@@ -102,8 +102,8 @@ var userSchema = mongoose.Schema({
 userSchema.plugin(mongooseTimestamp);
 //UPDATING HASH WHEN PASSWORD IS CHANGED
 userSchema.virtual('password').set(function () {
-	var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(password) {
-		return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+	var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(password) {
+		return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
 			while (1) {
 				switch (_context.prev = _context.next) {
 					case 0:
@@ -129,9 +129,9 @@ userSchema.virtual('password').set(function () {
 //AUTHORIZE USER
 userSchema.statics.authorize = function (user) {
 	return new Promise(function () {
-		var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(resolve, reject) {
+		var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(resolve, reject) {
 			var savedHash, match;
-			return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+			return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
 				while (1) {
 					switch (_context2.prev = _context2.next) {
 						case 0:
@@ -199,8 +199,8 @@ module.exports = require("lodash");
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return verify; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_User__ = __webpack_require__(1);
 
 
@@ -256,9 +256,9 @@ var validationConfig = function validationConfig() {
  *  @param {string} docid Optional- Unique Identifier of basedCollection's document that is related to user. If it's null, this function will find it in database automatically. 
  */
 /* harmony default export */ __webpack_exports__["a"] = ((function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(userid, docid) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(userid, docid) {
         var validation, basedCollection, useridKey, schema, doc;
-        return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
@@ -345,9 +345,9 @@ var validationConfig = function validationConfig() {
 })());
 //VERIFYING TOKEN
 var verify = function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(token) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(token) {
         var authenticationInfo, basedCollection, userid, docid, user, result, schema, doc;
-        return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+        return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
@@ -440,7 +440,8 @@ var http = __webpack_require__(24);
 var server = http.createServer();
 var hls = new HLSServer(server, {
   path: '/streams', // Base URI to output HLS streams
-  dir: 'public/videos' // Directory that input files are stored
+  dir: '/Users/shadab/Downloads/hls-server-master/test/files'  // Directory that input files are stored
+//   dir: 'public/videos' // Directory that input files are stored
 });
 server.listen(8000);
 
@@ -673,7 +674,7 @@ dotenv.config({
   path: path.resolve(__dirname, dotenvPath)
 });
 process.env.projectMode = projectMode;
-/* WEBPACK VAR INJECTION */}.call(exports, "src\\config"))
+/* WEBPACK VAR INJECTION */}.call(exports, "src/config"))
 
 /***/ }),
 /* 22 */
@@ -800,8 +801,8 @@ routes.post('/me', __WEBPACK_IMPORTED_MODULE_0__middlewares_Auth__["a" /* defaul
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_User__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Token__ = __webpack_require__(3);
 
@@ -820,9 +821,9 @@ var TOKENKEY = "x-access-token";
 
 //API AUTHENTICATION
 /* harmony default export */ __webpack_exports__["a"] = ((function () {
-	var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(req, res, next) {
+	var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(req, res, next) {
 		var api_token, verified;
-		return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+		return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
 			while (1) {
 				switch (_context.prev = _context.next) {
 					case 0:
@@ -885,15 +886,15 @@ module.exports = require("regenerator-runtime");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__);
 
 
 //HASHING PASSWORD
 var doHash = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(next) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(next) {
         var password;
-        return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
@@ -959,8 +960,8 @@ hashSchema.pre('findOneAndUpdate', doHash);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return register; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return login; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return me; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models_User__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__middlewares_Token__ = __webpack_require__(3);
 
@@ -979,10 +980,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 /*          POST /api/users/register            */
 var register = function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(req, res, next) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee(req, res, next) {
         var _req$body, username, password, newUser, savedUser, token;
 
-        return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+        return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
@@ -1059,10 +1060,10 @@ var register = function () {
 }();
 /*          POST /api/users/login            */
 var login = function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(req, res, next) {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee2(req, res, next) {
         var _req$body2, username, password, user, authenticated, token;
 
-        return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+        return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
@@ -1136,8 +1137,8 @@ var login = function () {
 }();
 /*          POST /api/users/me            */
 var me = function () {
-    var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3(req, res) {
-        return __WEBPACK_IMPORTED_MODULE_0_D_GitHub_info_stream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.mark(function _callee3(req, res) {
+        return __WEBPACK_IMPORTED_MODULE_0__Volumes_MyDrive_MyProjects_infoStream_info_stream_server_node_modules_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:

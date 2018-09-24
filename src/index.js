@@ -7,18 +7,19 @@ import vars from "./globals";
 import './config/env';
 
 import Project from './config/project';
-var HLSServer = require('hls-server')
-var http = require('http')
+// var HLSServer = require('hls-server')
+// var http = require('http')
 
 
 
 
-var server = http.createServer()
-var hls = new HLSServer(server, {
-  path: '/streams',     // Base URI to output HLS streams
-  dir: 'public/videos'  // Directory that input files are stored
-})
-server.listen(8000)
+// var server = http.createServer()
+// var hls = new HLSServer(server, {
+//   path: '/streams',     // Base URI to output HLS streams
+//   dir: '/Users/shadab/Downloads/hls-server-master/test/files'  // Directory that input files are stored
+//   // dir: 'public/videos'  // Directory that input files are stored
+// })
+// server.listen(8000)
 
 
 
@@ -69,7 +70,7 @@ app.use((err,req,res,next)=>{
   return res.status(err.status).json({error:err.message})
 })
 
-const port = process.env.API_PORT || 3000;
+const port = process.env.API_PORT || 8000;
 
 
 app.listen(port, (err) => {
