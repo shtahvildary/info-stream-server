@@ -1,0 +1,70 @@
+-pix_fmt yuv420p -deinterlace -vf "scale=640:360" -vsync 1 -threads 0 -vcodec libx264 -r 29.970 -g 60 -sc_threshold 0 -b:v 1024k -bufsize 1216k -maxrate 1280k -preset medium -profile: v main -tune film -acodec aac -b:a 128k -ac 2 -ar 48000 -af "aresample=async=1:min_hard_comp=0.100000:first_pts=0" -vbsf h264_mp4toannexb -f mpegts udp://127.0.0.1:10000
+
+
+-----------------------------------------------------------------------------------------
+https://www.wowza.com/docs/how-to-live-stream-using-ffmpeg-with-wowza-streaming-engine
+
+Save a live stream as .mp4:
+ffmpeg -i [live-url] -codec copy -f mpeg-ts -y out.ts ffmpeg -i [live-url] -codec copy -f mp4 -y out.mp4
+
+ffmpeg -i "http:172.16.16.103:1383" -codec copy -f mp4 -y "out.mp4"
+
+
+
+
+
+restream in udp:
+ffmpeg -re -i "http://172.16.16.103:1383" -r 25 -vcodec libx264 -preset ultrafast -tune zerolatency -crf 18 -b:v 500k -bufsize 300k -f mpegts udp://localhost:1234
+
+ffmpeg -re -i "http://172.16.16.103:1383" -codec copy -preset ultrafast -s 320X240 -tune zerolatency -crf 18 -b:v 5k -bufsize 300k -f mpegts udp://172.16.17.159:1234
+
+
+
+restream over http:
+ffmpeg -re -i "http://172.16.16.103:1383" -codec copy -preset ultrafast -s 320X240  -maxrate 200 -tune zerolatency -crf 18 -b:v 5k -bufsize 300k -listen 1 -f mpegts http://172.16.16.153:8080
+
+
+
+------------------------------------------------------------------------------------------------
+hls:
+
+ffmpeg -i in.mkv -c:v h264 -flags +cgop -g 30 -hls_time 1 out.m3u8
+
+ffmpeg -i http:172.16.16.103:1383 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/varzesh.m3u8
+
+ffmpeg -i http:172.16.16.103:1371 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv1.m3u8
+
+ffmpeg -i http:172.16.16.103:1372 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv2.m3u8
+
+ffmpeg -i http:172.16.16.103:1373 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv3.m3u8
+
+ffmpeg -i http:172.16.16.103:1374 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv4.m3u8
+
+ffmpeg -i http:172.16.16.103:1375 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv5.m3u8
+
+------------------------------------------------------------------------------------------------
+mosaic:
+
+ffmpeg
+	-i 1.avi -i 2.avi -i 3.avi -i 4.avi
+	-filter_complex "
+		nullsrc=size=640x480 [base];
+		[0:v] setpts=PTS-STARTPTS, scale=320x240 [upperleft];
+		[1:v] setpts=PTS-STARTPTS, scale=320x240 [upperright];
+		[2:v] setpts=PTS-STARTPTS, scale=320x240 [lowerleft];
+		[3:v] setpts=PTS-STARTPTS, scale=320x240 [lowerright];
+		[base][upperleft] overlay=shortest=1 [tmp1];
+		[tmp1][upperright] overlay=shortest=1:x=320 [tmp2];
+		[tmp2][lowerleft] overlay=shortest=1:y=240 [tmp3];
+		[tmp3][lowerright] overlay=shortest=1:x=320:y=240
+	"
+	-c:v libx264 output.mkv
+
+
+ffmpeg -i http:172.16.16.103:1371 -i http:172.16.16.103:1372 -i http:172.16.16.103:1373 -i http:172.16.16.103:1374 -filter_complex "nullsrc=size=720x576 [base]; [0:v] scale=180x144 [upperleft]; [1:v] scale=180x144 [upperright]; [2:v] scale=180x144 [lowerleft]; [3:v] scale=180x144 [lowerright]; [base][upperleft] overlay=shortest=0 [tmp1]; [tmp1][upperright] overlay=shortest=0:x=320 [tmp2]; [tmp2][lowerleft] overlay=shortest=0:y=240 [tmp3]; [tmp3][lowerright] overlay=shortest=0:x=320:y=240" -c:v h264 -flags +cgop -g 30 -hls_time 1 d:/hls-test/mosaic.m3u8
+
+
+
+ffmpeg -i http:172.16.16.103:1371 -i http:172.16.16.103:1372 -i http:172.16.16.103:1373 -i http:172.16.16.103:1374 -i http:172.16.16.103:1375 -i http:172.16.16.103:1376 -i http:172.16.16.103:1377 -i http:172.16.16.103:1378 -i http:172.16.16.103:1379 -i http:172.16.16.103:1380 -i http:172.16.16.103:1381 -i http:172.16.16.103:1382 -i http:172.16.16.103:1383 -i http:172.16.16.103:1384 -i http:172.16.16.103:1385 -i http:172.16.16.103:1387 -filter_complex "nullsrc=size=720x576 [base];[0:v] scale=180x144 [v00];[1:v] scale=180x144 [v01];[2:v] scale=180x144 [v02];[3:v] scale=180x144 [v03];[4:v] scale=180x144 [v10];[5:v] scale=180x144 [v11];[6:v] scale=180x144 [v12];[7:v] scale=180x144 [v13];[8:v] scale=180x144 [v20];[9:v] scale=180x144 [v21];[10:v] scale=180x144 [v22];[11:v] scale=180x144 [v23];[12:v] scale=180x144 [v30];[13:v] scale=180x144 [v31];[14:v] scale=180x144 [v32];[15:v] scale=180x144 [v33];[base][v00] overlay=shortest=0 [tmp0];[tmp0][v01] overlay=shortest=0:x=180 [tmp1];[tmp1][v02] overlay=shortest=0:x=360 [tmp2];[tmp2][v03] overlay=shortest=0:x=540 [tmp3];[tmp3][v10] overlay=shortest=0:y=144 [tmp4];[tmp4][v11] overlay=shortest=0:x=180:y=144 [tmp5];[tmp5][v12] overlay=shortest=0:x=360:y=144 [tmp6];[tmp6][v13] overlay=shortest=0:x=540:y=144 [tmp7];[tmp7][v20] overlay=shortest=0:y=288 [tmp8];[tmp8][v21] overlay=shortest=0:x=180:y=288 [tmp9];[tmp9][v22] overlay=shortest=0:x=360:y=288 [tmp10];[tmp10][v23] overlay=shortest=0:x=540:y=288 [tmp11];[tmp11][v30] overlay=shortest=0:y=432 [tmp12];[tmp12][v31] overlay=shortest=0:x=180:y=432 [tmp13];[tmp13][v32] overlay=shortest=0:x=360:y=432 [tmp14];[tmp14][v33] overlay=shortest=0:x=540:y=432" -an -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/mosaic.m3u8
+
+
