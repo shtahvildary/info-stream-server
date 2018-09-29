@@ -1,8 +1,15 @@
 var httpAttach = require('http-attach') // useful module for attaching middlewares
 var HLSServer = require('hls-server')
 var http = require('http')
-
+const StreamCreator=require('./src/StreamCreator')
+  
 var server = http.createServer()
+StreamCreator.ffmpeg()
+
+const silence = new StreamCreator(server, {
+  width : 640,
+  height: 480,
+});
 
 var hls = new HLSServer(server, {
   path: '',     // Base URI to output HLS streams

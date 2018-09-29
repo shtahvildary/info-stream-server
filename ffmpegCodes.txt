@@ -30,7 +30,6 @@ hls:
 
 ffmpeg -i in.mkv -c:v h264 -flags +cgop -g 30 -hls_time 1 out.m3u8
 
-ffmpeg -i http:172.16.16.103:1383 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/varzesh.m3u8
 
 ffmpeg -i http:172.16.16.103:1371 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv1.m3u8
 
@@ -41,6 +40,43 @@ ffmpeg -i http:172.16.16.103:1373 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls
 ffmpeg -i http:172.16.16.103:1374 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv4.m3u8
 
 ffmpeg -i http:172.16.16.103:1375 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv5.m3u8
+
+ffmpeg -i http:172.16.16.103:1376 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/amoozesh.m3u8
+
+ffmpeg -i http:172.16.16.103:1376 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/amoozesh.m3u8
+
+ffmpeg -i http:172.16.16.103:1377 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/qouran.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1378 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/salamat.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1379 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/nasim.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1380 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/mostanad.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1381 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/namayesh.m3u8
+
+ffmpeg -i http:172.16.16.103:1382 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/ofogh.m3u8
+
+ffmpeg -i http:172.16.16.103:1383 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/varzesh.m3u8
+
+ffmpeg -i http:172.16.16.103:1384 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/pooya.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1385 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tamasha.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1386 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/tv3HD.m3u8
+
+ffmpeg -i http:172.16.16.103:1387 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/omid.m3u8
+
+
+ffmpeg -i http:172.16.16.103:1388 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/jam_e_jam.m3u8
+
+ffmpeg -i http:172.16.16.103:1389 -c:v h264 -flags +cgop -g 30 -hls_time 10 -hls_flags delete_segments d:/hls-test/irinn.m3u8
 
 ------------------------------------------------------------------------------------------------
 mosaic:
