@@ -1,10 +1,13 @@
 var httpAttach = require('http-attach') // useful module for attaching middlewares
 var HLSServer = require('hls-server')
 var http = require('http')
-const StreamCreator=require('./src/StreamCreator')
-  
+// const StreamCreator=require('./src/StreamCreator')
+var mosaic=require('./src/mosaic-ffmpeg')
+
+var myMosaic=new mosaic;
+myMosaic.createMosaic();
 var server = http.createServer()
-StreamCreator.ffmpeg()
+
 
 const silence = new StreamCreator(server, {
   width : 640,
