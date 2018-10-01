@@ -8,7 +8,7 @@ var ffmpeg = require('fluent-ffmpeg');
 var command = ffmpeg()
  function createMosaic(){
 // Change this to the desired output resolution  
-var x=640, y=480;
+var x=720, y=576;
 
 var videoInfo = [];
 
