@@ -5,9 +5,11 @@
 //
 
 const StreamCreator = require('./src/StreamCreator');
+const Mosaic = require('./src/mosaic-ffmpeg');
 // const NodeRtmpClient = require('./node_rtmp_client');
 
 module.exports = {
   StreamCreator,
+  Mosaic,
   // NodeRtmpClient
 };
