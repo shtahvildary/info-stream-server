@@ -66,8 +66,11 @@ mosaicConfig={inputs:[{id:1, name: 'tv1', address: "http://172.16.16.103:1371" }
 { id:15,name: 'tamasha', address: "http://172.16.16.103:1385" },
 { id:16,name: 'tv3HD', address: "http://172.16.16.103:1386" },]}
 var server = http.createServer()
-// var tsCreator=new StreamCreator(config)
-// tsCreator.coding()
+
+
+var tsCreator=new StreamCreator(config)
+  tsCreator.coding()
+
 
 var mosaicCreator=new Mosaic(mosaicConfig)
 mosaicCreator.coding()
