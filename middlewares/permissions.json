@@ -1,0 +1,127 @@
+[    
+    {
+        "code": 101,
+        "title": "Add new NetNode",
+        "description": "افزودن نود جدید"
+    },
+    {
+        "code": 102,
+        "title": "Add new switch",
+        "description": "افزودن سوییچ جدید"
+    },
+    {
+        "code": 103,
+        "title": "Add new location",
+        "description": "افزودن مکان جدید"
+    },
+    {
+        "code": 104,
+        "title": "Add new vlan",
+        "description": "افزودن شبکه مجازی جدید"
+    },
+    {
+        "code": 105,
+        "title": "Add new device",
+        "description": "افزودن سخت افزار جدید"
+    },
+    {
+        "code": 106,
+        "title": "Add new users-group",
+        "description": "افزودن گروه کاربری جدید"
+    },
+    {
+        "code": 107,
+        "title": "Add new device type",
+        "description": "افزودن نوع سخت افزاری جدید"
+    },
+    {
+        "code": 108,
+        "title": "Add new department",
+        "description": "افزودن واحد جدید"
+    },
+
+
+
+    {
+        "code": 201,
+        "title": "update a NetNode",
+        "description": "تغییر مشخصات نود"
+    },
+    {
+        "code": 202,
+        "title": "update a switch",
+        "description": "تغییر مشخصات سوییچ"
+    },
+    {
+        "code": 203,
+        "title": "update a location",
+        "description": "تغییر مشخصات مکان"
+    },
+    {
+        "code": 204,
+        "title": "update a vlan",
+        "description": "تغییر مشخصات شبکه مجازی"
+    },
+    {
+        "code": 205,
+        "title": "update a device",
+        "description": "تغییر مشخصات سخت افزار"
+    },
+    {
+        "code": 206,
+        "title": "update a users-group",
+        "description": "تغییر مشخصات گروه کاربری"
+    },
+    {
+        "code": 207,
+        "title": "update a device type",
+        "description": "تغییر مشخصات نوع سخت افزاری"
+    },
+    {
+        "code": 208,
+        "title": "update a department",
+        "description": "تغییر مشخصات واحد"
+    },
+
+
+    {
+        "code": 301,
+        "title": "View NetNodes",
+        "description": "مشاهده نودها"
+    },
+    {
+        "code": 302,
+        "title": "View switches",
+        "description": "مشاهده سوییچها"
+    },
+    {
+        "code": 303,
+        "title": "View locations",
+        "description": "مشاهده مکانها"
+    },
+    {
+        "code": 304,
+        "title": "View vlans",
+        "description": "مشاهده شبکه های مجازی"
+    },
+    {
+        "code": 305,
+        "title": "View devices",
+        "description": "مشاهده سخت افزارها"
+    },
+    {
+        "code": 306,
+        "title": "View users-groups",
+        "description": "مشاهده گروه های کاربری"
+    },
+    {
+        "code": 307,
+        "title": "View device types",
+        "description": "مشاهده انواع سخت افزارها"
+    },
+    {
+        "code": 308,
+        "title": "View departments",
+        "description": "مشاهده واحدها"
+    }
+]

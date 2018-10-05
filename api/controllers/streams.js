@@ -113,3 +113,25 @@ function getStream(req, res, next) {
 
 exports.getStreams = getStreams;
 exports.getStream = getStream;
+
+
+////////////////////////////////////////////
+
+
+import streamCreator from '../../src/StreamCreator';
+
+/*      POST /api/streams/state/change     */
+export let change_state=async(req,res)=>{
+    if(!req.validate(["name"])) return;
+    var {name,address}=req.body;
+    try{
+        streamCreator.callFfmpeg(name,address)
+        
+        return res.validSend(200,{stream:{name,address}})
+    }
+    catch(e){
+        console.error(e);
+        return res.validSend(500,{error:e});
+    }
+}
+

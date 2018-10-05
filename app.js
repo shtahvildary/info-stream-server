@@ -13,26 +13,26 @@ var server = http.createServer()
 
 const config = {
   inputs:[
-    //{ name:'out',address:'/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4'},
-    {id:1, name: 'tv1', address: "http://172.16.16.103:1371" },
-   { id:2,name: 'tv2', address: "http://172.16.16.103:1372" },
-   { id:3,name: 'tv3', address: "http://172.16.16.103:1373" },
-   { id:4,name: 'tv4', address: "http://172.16.16.103:1374" },
-   { id:5,name: 'tv5', address: "http://172.16.16.103:1375" },
-   { id:6,name: 'amoozesh', address: "http://172.16.16.103:1376" },
-   { id:7,name: 'quran', address: "http://172.16.16.103:1377" },
-   { id:8,name: 'salamat', address: "http://172.16.16.103:1378" },
-   { id:9,name: 'nasim', address: "http://172.16.16.103:1379" },
-   { id:10,name: 'mostanad', address: "http://172.16.16.103:1380" },
-   { id:11,name: 'namayesh', address: "http://172.16.16.103:1381" },
-   { id:12,name: 'ofogh', address: "http://172.16.16.103:1382" },
-   { id:13,name: 'varzesh', address: "http://172.16.16.103:1383" },
-   { id:14,name: 'pooya', address: "http://172.16.16.103:1384" },
-   { id:15,name: 'tamasha', address: "http://172.16.16.103:1385" },
-   { id:16,name: 'tv3HD', address: "http://172.16.16.103:1386" },
-   { id:17,name: 'omid', address: "http://172.16.16.103:1387" },
-   { id:18,name: 'jam_e_jam', address: "http://172.16.16.103:1388" },
-   { id:19,name: 'irinn', address: "http://172.16.16.103:1389" },
+    { id:1,name:'out',address:'/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4'},
+  //   {id:1, name: 'tv1', address: "http://172.16.16.103:1371" },
+  //  { id:2,name: 'tv2', address: "http://172.16.16.103:1372" },
+  //  { id:3,name: 'tv3', address: "http://172.16.16.103:1373" },
+  //  { id:4,name: 'tv4', address: "http://172.16.16.103:1374" },
+  //  { id:5,name: 'tv5', address: "http://172.16.16.103:1375" },
+  //  { id:6,name: 'amoozesh', address: "http://172.16.16.103:1376" },
+  //  { id:7,name: 'quran', address: "http://172.16.16.103:1377" },
+  //  { id:8,name: 'salamat', address: "http://172.16.16.103:1378" },
+  //  { id:9,name: 'nasim', address: "http://172.16.16.103:1379" },
+  //  { id:10,name: 'mostanad', address: "http://172.16.16.103:1380" },
+  //  { id:11,name: 'namayesh', address: "http://172.16.16.103:1381" },
+  //  { id:12,name: 'ofogh', address: "http://172.16.16.103:1382" },
+  //  { id:13,name: 'varzesh', address: "http://172.16.16.103:1383" },
+  //  { id:14,name: 'pooya', address: "http://172.16.16.103:1384" },
+  //  { id:15,name: 'tamasha', address: "http://172.16.16.103:1385" },
+  //  { id:16,name: 'tv3HD', address: "http://172.16.16.103:1386" },
+  //  { id:17,name: 'omid', address: "http://172.16.16.103:1387" },
+  //  { id:18,name: 'jam_e_jam', address: "http://172.16.16.103:1388" },
+  //  { id:19,name: 'irinn', address: "http://172.16.16.103:1389" },
 ],
   
   // trans: {
@@ -72,8 +72,8 @@ var tsCreator=new StreamCreator(config)
   tsCreator.coding()
 
 
-var mosaicCreator=new Mosaic(mosaicConfig)
-mosaicCreator.coding()
+// var mosaicCreator=new Mosaic(mosaicConfig)
+// mosaicCreator.coding()
 
 
 
