@@ -1,13 +1,16 @@
+var { ServerRequest } =require ("http");
+var express=require("express")
+
 /**
  *          .::ROUTES::.
  * All routes are imported here.
  * 
  */
 const routes = express.Router();
-import streams from './streams';
+var streams =require('./streams');
 
 
 //USING ROUTES
 routes.use('/streams',streams);
-
-export default routes;
+module.exports=routes
+// export default routes;

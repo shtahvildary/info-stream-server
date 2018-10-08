@@ -8,6 +8,8 @@ const StreamCreator = require('./src/StreamCreator');
 const Mosaic = require('./src/mosaic-ffmpeg');
 // const NodeRtmpClient = require('./node_rtmp_client');
 
+
+
 global.serverAddress = "http://localhost:5000/api";
 
 
@@ -30,11 +32,13 @@ module.exports = {
 
 
 // import './config/database';
-import routes from './api/routes';
-import CORS from './middlewares/CORS';
-import ExpressPlugins from './middlewares/ExpressPlugins';
-
+var routes =require( './api/routes');
+var CORS =require ('./middlewares/CORS');
+var ExpressPlugins = require ('./middlewares/ExpressPlugins');
+var express=require("express")
 const app = express();
+// var bodyParser= require('body-parser'),
+
 
 
 // Middlewares

@@ -3,8 +3,8 @@
  * Express plugins and all adding data to req and res are here.
  * 
  */
-import isValid from './isValid';
-export default (req, res, next)=> {
+var isValid =require ('./isValid');
+module.exports= (req, res, next)=> {
 	validators(req,res);
 
 	next();

@@ -118,10 +118,10 @@ exports.getStream = getStream;
 ////////////////////////////////////////////
 
 
-import streamCreator from '../../src/StreamCreator';
+var streamCreator =require ('../../src/StreamCreator');
 
 /*      POST /api/streams/state/change     */
-export let change_state=async(req,res)=>{
+ let change_state=async(req,res)=>{
     if(!req.validate(["name"])) return;
     var {name,address}=req.body;
     try{
@@ -134,4 +134,5 @@ export let change_state=async(req,res)=>{
         return res.validSend(500,{error:e});
     }
 }
+module.exports=change_state;
 

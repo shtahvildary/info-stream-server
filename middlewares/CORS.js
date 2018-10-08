@@ -3,7 +3,7 @@
  * Cross-Origin Resource Sharing configuration
  * 
  */
-export default function CORS(req, res, next) {
+ function CORS(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   // res.header('Access-Control-Allow-Origin', 'localhost:5000');
   res.header('Access-Control-Allow-Methods', 'PUT, GET, HEAD, POST, DELETE, OPTIONS');
@@ -11,3 +11,4 @@ export default function CORS(req, res, next) {
   res.header('Access-Control-Allow-Credentials', 'true');
   next();
 }
+module.exports=CORS

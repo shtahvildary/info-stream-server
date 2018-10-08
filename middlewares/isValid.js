@@ -60,7 +60,7 @@ let deepOmit = (object, keys) => {
  * @param forbiddenKeys {string[]} Keys that are not allowed to be in req.body
  *
  */
-export function req(requiredKeys, forbiddenKeys) {
+module.exports= function req(requiredKeys, forbiddenKeys) {
   var req = this;
   var { res } = req;
   var { body } = req;
@@ -94,7 +94,7 @@ export function req(requiredKeys, forbiddenKeys) {
  * @param {*} body response body
  * @param {string[]} omitKeys Optional - keys to omit from response body
  */
-export function res(status, body, omitKeys) {
+module.exports= function res(status, body, omitKeys) {
   if (!status) status = 200;
   if (body)
     if (validator.isJSON(JSON.stringify(body))) {
@@ -109,7 +109,7 @@ export function res(status, body, omitKeys) {
   return this.status(status).json(body);
 }
 
-export default {
-  req,
-  res
-};
+// export default {
+//   req,
+//   res
+// };
