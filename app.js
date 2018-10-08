@@ -33,7 +33,7 @@ const config = {
   //  { id:17,name: 'omid', address: "http://172.16.16.103:1387",dshow:0 },
   //  { id:18,name: 'jam_e_jam', address: "http://172.16.16.103:1388",dshow:0 },
   //  { id:19,name: 'irinn', address: "http://172.16.16.103:1389",dshow:0 },
-   { id:20,name: 'SDI', address='video="Blackmagic WDM Capture"',dshow:1 },
+   { id:20,name: 'SDI', address:'video="Blackmagic WDM Capture"',dshow:1 },
 ],
   
   // trans: {
