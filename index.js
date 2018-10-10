@@ -37,8 +37,8 @@ var CORS =require ('./middlewares/CORS');
 var ExpressPlugins = require ('./middlewares/ExpressPlugins');
 var express=require("express")
 const app = express();
-// var bodyParser= require('body-parser'),
-
+var bodyParser = require('body-parser')
+var path=require('path');
 
 
 // Middlewares
