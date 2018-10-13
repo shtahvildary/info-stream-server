@@ -32,7 +32,7 @@ module.exports = {
 
 
 // import './config/database';
-var routes =require( './api/routes');
+var routes=require( './api/routes');
 var CORS =require ('./middlewares/CORS');
 var ExpressPlugins = require ('./middlewares/ExpressPlugins');
 var express=require("express")
@@ -46,7 +46,7 @@ app.use(bodyParser.json());
 app.use(CORS);
 app.use(ExpressPlugins);
 
-// Routes
+// routes
 routes.post('/', (req, res) => res.json({
   message: Project.Name+ ' API'
 }));
@@ -61,7 +61,7 @@ app.use(function (req, res, next) {
 app.use((err,req,res,next)=>{
   if(!err) return res.validSend(201,{});
   if(!err.status)err.status=500;
-  return res.status(err.status).json({error:err.message})
+  return res.status(err.status).json({error:"hiiii"+err.message})
 })
 
 const port = process.env.API_PORT || 8001;

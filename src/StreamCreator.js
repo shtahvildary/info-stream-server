@@ -12,8 +12,6 @@ class StreamCreator {
   callFfmpeg(address, name) {
     ffmpeg(address, { timeout: 432000 })
       .addOptions([
-        // ffmpeg('/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4', { timeout: 432000 }).addOptions([
-
         "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
         "-level 3.0",
         "-s 720x576", // 720px width, 576px height output video dimensions
@@ -25,33 +23,39 @@ class StreamCreator {
       ])
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
-    
-      .output('d:/hls-test/'+name+'.m3u8')
 
-      .on("start", function() {
-        console.log(name + " is started :)");
+      .output('d:/hls-test/' + name + '.m3u8')
+
+      .on("start", function () {
+        console.log(name + " is started with address: "+address+":)");
+        request.post(
+          global.serverAddress+"/streamServer/hasChanged",
+          JSON.stringify({jason:{name,address}}),
+          (err, body, response)  =>{
+            //////////
+          }
+        )
       })
-      .on("progress", function(progress) {
+      .on("progress", function (progress) {
 
         // console.log(name+ ': ... frames: ' + progress.frames);
       })
       // .on('stderr', function(stderrLine) {
       //   console.log('Stderr output: ' + stderrLine);
       // })
-      .on('error', function(err, stdout, stderr) {
+      .on('error', function (err, stdout, stderr) {
         console.log('Cannot process video: ' + err.message);
       })
-      .on("end", function() {
+      .on("end", function () {
         console.log(name + " has stoped :(");
         request.post(
-          global.serverAddress+"/streamServer/hasChanged",
-          // "http://localhost:5000/api/streamServer/hasChanged",
+          global.serverAddress + "/streamServer/hasChanged",
           { json: { name, address } },
           (err, body, response) => {
             //////////
           }
         );
-        // callFfmpeg(address,name)
+        callFfmpeg(address,name)
       })
       .run();
   }
@@ -59,9 +63,6 @@ class StreamCreator {
   dShowFfmpeg(address, name) {
     ffmpeg(address, { timeout: 432000 })
       .addOptions([
-        // ffmpeg('/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4', { timeout: 432000 }).addOptions([
-
-
         "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
         "-level 3.0",
         "-s 720x576", // 720px width, 576px height output video dimensions
@@ -74,22 +75,21 @@ class StreamCreator {
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
-      .output('d:/hls-test/'+name+'.m3u8')
+      .output('d:/hls-test/' + name + '.m3u8')
 
-      .on("start", function() {
+      .on("start", function () {
         console.log(name + " is started :)");
       })
-      .on("progress", function(progress) {
-        console.log(name+ ': ... frames: ' + progress.frames);
-      }).on('stderr', function(stderrLine) {
+      .on("progress", function (progress) {
+        console.log(name + ': ... frames: ' + progress.frames);
+      }).on('stderr', function (stderrLine) {
         console.log('Stderr output: ' + stderrLine);
-      }).on('error', function(err, stdout, stderr) {
+      }).on('error', function (err, stdout, stderr) {
         console.log('Cannot process video: ' + err.message);
-      }).on("end", function() {
+      }).on("end", function () {
         console.log(name + " has stoped :(");
         request.post(
-          global.serverAddress+"/streamServer/hasChanged",
-          "http://localhost:5000/api/streamServer/hasChanged",
+          global.serverAddress + "/streamServer/hasChanged",
           { json: { name, address } },
           (err, body, response) => {
             //////////
@@ -99,11 +99,10 @@ class StreamCreator {
       .run();
   }
   coding() {
-    console.log(this.inputs);
     this.inputs.forEach(async (i, index) => {
-      if(i.dshow===0)
-      this.callFfmpeg(i.address, i.name);
-      else this.dShowFfmpeg(i.address,i.name)
+      if (i.dshow === 0)
+        this.callFfmpeg(i.address, i.name);
+      else this.dShowFfmpeg(i.address, i.name)
     });
   }
 }

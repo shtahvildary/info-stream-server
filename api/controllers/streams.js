@@ -122,6 +122,7 @@ var streamCreator =require ('../../src/StreamCreator');
 
 /*      POST /api/streams/state/change     */
  let change_state=async(req,res)=>{
+   console.log("req: ",req.body.name)
     if(!req.validate(["name"])) return;
     var {name,address}=req.body;
     try{
@@ -134,5 +135,5 @@ var streamCreator =require ('../../src/StreamCreator');
         return res.validSend(500,{error:e});
     }
 }
-module.exports=change_state;
+exports.change_state=change_state;
 
