@@ -8,11 +8,10 @@ var express=require("express")
  */
 const routes = express.Router();
 var streams =require('./streams');
-// import streams from'./streams';
 
 
 //USING ROUTES
 routes.use('/streams',streams);
-// exports.routes=routes
 module.exports=routes
+// exports.routes=routes
 // export default routes;

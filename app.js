@@ -13,8 +13,8 @@ var server = http.createServer()
 
 const config = {
   inputs:[
-    // { id:1,name:'out',address:'/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4',dshow:0},
-    {id:1, name: 'tv1', address: "http://172.16.16.103:1371",dshow:0 },
+    { id:1,name:'out',address:'/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4',dshow:0},
+    // {id:1, name: 'tv1', address: "http://172.16.16.103:1371",dshow:0 },
   //  { id:2,name: 'tv2', address: "http://172.16.16.103:1372",dshow:0 },
   //  { id:3,name: 'tv3', address: "http://172.16.16.103:1373",dshow:0 },
   //  { id:4,name: 'tv4', address: "http://172.16.16.103:1374",dshow:0 },
@@ -32,7 +32,7 @@ const config = {
   //  { id:16,name: 'tv3HD', address: "http://172.16.16.103:1386",dshow:0 },
   //  { id:17,name: 'omid', address: "http://172.16.16.103:1387",dshow:0 },
   //  { id:18,name: 'jam_e_jam', address: "http://172.16.16.103:1388",dshow:0 },
-   { id:19,name: 'irinn', address: "http://172.16.16.103:1389",dshow:0 },
+  //  { id:19,name: 'irinn', address: "http://172.16.16.103:1389",dshow:0 },
   //  { id:20,name: 'SDI', address:'video="Blackmagic WDM Capture"',dshow:1 },
 ],
   

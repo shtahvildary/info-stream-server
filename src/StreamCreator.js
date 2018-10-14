@@ -21,10 +21,10 @@ class StreamCreator {
         "-hls_flags delete_segments",
         "-f hls" // HLS format
       ])
-      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
 
-      .output('d:/hls-test/' + name + '.m3u8')
+      // .output('d:/hls-test/' + name + '.m3u8')
 
       .on("start", function () {
         console.log(name + " is started with address: "+address+":)");
@@ -55,7 +55,6 @@ class StreamCreator {
             //////////
           }
         );
-        callFfmpeg(address,name)
       })
       .run();
   }
@@ -72,10 +71,10 @@ class StreamCreator {
         "-hls_flags delete_segments",
         "-f dshow" // direct show format
       ])
-      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
-      .output('d:/hls-test/' + name + '.m3u8')
+      // .output('d:/hls-test/' + name + '.m3u8')
 
       .on("start", function () {
         console.log(name + " is started :)");
