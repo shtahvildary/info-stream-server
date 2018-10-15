@@ -1,33 +1,26 @@
 {
-  "name": "shery-boilerplate-server",
-  "version": "0.0.1",
-  "private": true,
-  "main": "./app.js",
+  "name": "info-stream-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./build/main.js",
-    "dev": "backpack dev",
-    "build": "backpack build",
-    "postinstall": "backpack build",
-    "production": "backpack build && node ./build/main.js --production"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shtahvildary/info-stream-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shtahvildary/info-stream-server/issues"
+  },
+  "homepage": "https://github.com/shtahvildary/info-stream-server#readme",
   "dependencies": {
-    "backpack-core": "^0.4.2",
-    "bcrypt": "^1.0.3",
-    "body-parser": "^1.17.2",
-    "dotenv": "^4.0.0",
-    "express": "^4.15.4",
-    "formidable": "^1.1.1",
-    "jsonwebtoken": "^8.1.0",
-    "lodash": "^4.17.4",
-   
-    
-    "nodeify": "^1.0.1",
-    "path": "^0.12.7",
-    "shery-logger": "^0.1.0",
-    
-    "validator": "^9.2.0"
-  },
-  "devDependencies": {
-    "morgan": "^1.8.2"
+    "express": "^4.16.4",
+    "fluent-ffmpeg": "^2.1.2",
+    "hls-server": "^1.5.0",
+    "http-attach": "^1.0.0",
+    "request": "^2.88.0"
   }
 }

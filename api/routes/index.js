@@ -13,5 +13,3 @@ var streams =require('./streams');
 //USING ROUTES
 routes.use('/streams',streams);
 module.exports=routes
-// exports.routes=routes
-// export default routes;
