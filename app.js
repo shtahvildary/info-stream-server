@@ -11,8 +11,8 @@ const {StreamCreator,Mosaic}=require('./index');
 // myMosaic.createMosaic();
 var server = http.createServer()
 
-const config = {
-  inputs:[
+const 
+  inputs=[
     // { id:1,name:'out',address:'/Users/shadab/Downloads/video_2017-08-09_18-26-12.mp4',dshow:0},
     {id:1, name: 'tv1', address: "http://172.16.16.103:1371",dshow:0 },
   //  { id:2,name: 'tv2', address: "http://172.16.16.103:1372",dshow:0 },
@@ -35,22 +35,8 @@ const config = {
   //  { id:19,name: 'irinn', address: "http://172.16.16.103:1389",dshow:0 },
   //  { id:20,name: 'SDI', address:'video="Blackmagic WDM Capture"',dshow:1 },
 ],
-  
-  // trans: {
-  //   ffmpeg: 'D:/Softwares/ffmpeg-20180828-26dc763-win64-static/ffmpeg-20180828-26dc763-win64-static/bin',
-  //   // ffmpeg: '/usr/local/bin/ffmpeg',
-  //   tasks: [
-  //     {
-        
-  //       ac: 'aac',
-  //       hls: true,
-  //       hlsFlags: '[hls_time=2:hls_list_size=0:hls_flags=delete_segments]',
-        
-  //     }
-  //   ]
-  // }
-};
-mosaicConfig={inputs:[{id:1, name: 'tv1', address: "http://172.16.16.103:1371" },
+
+mosaicConfig=[{id:1, name: 'tv1', address: "http://172.16.16.103:1371" },
 { id:2,name: 'tv2', address: "http://172.16.16.103:1372" },
 { id:3,name: 'tv3', address: "http://172.16.16.103:1373" },
 { id:4,name: 'tv4', address: "http://172.16.16.103:1374" },
@@ -65,16 +51,16 @@ mosaicConfig={inputs:[{id:1, name: 'tv1', address: "http://172.16.16.103:1371" }
 { id:13,name: 'varzesh', address: "http://172.16.16.103:1383" },
 { id:14,name: 'pooya', address: "http://172.16.16.103:1384" },
 { id:15,name: 'tamasha', address: "http://172.16.16.103:1385" },
-{ id:16,name: 'tv3HD', address: "http://172.16.16.103:1386" },]}
+{ id:16,name: 'tv3HD', address: "http://172.16.16.103:1386" },]
 var server = http.createServer()
 
 
-var tsCreator=new StreamCreator(config)
-  tsCreator.coding()
+var tsCreator=new StreamCreator(inputs)
+  tsCreator.start()
 
 
 // var mosaicCreator=new Mosaic(mosaicConfig)
-// mosaicCreator.coding()
+// mosaicCreator.start()
 
 
 

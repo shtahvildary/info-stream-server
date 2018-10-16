@@ -6,11 +6,11 @@
 //   Generates out.mp4
 var ffmpeg = require('fluent-ffmpeg');
 class Mosaic {
-    constructor(config) {
-        this.inputs = config.inputs
+    constructor(inputs) {
+        this.inputs = inputs
     }
 
-    coding() {
+    start() {
     var command = ffmpeg()
     // Change this to the desired output resolution  
     var x = 720, y = 576;

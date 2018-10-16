@@ -2,9 +2,8 @@ var ffmpeg = require("fluent-ffmpeg");
 var request = require("request");
 
 class StreamCreator {
-  constructor(config) {
-    this.config = config;
-    this.inputs = config.inputs;
+  constructor(inputs) {
+    this.inputs = inputs;
   }
 
   // https://www.ffmpeg.org/ffmpeg-formats.html#hls-2
@@ -30,7 +29,8 @@ class StreamCreator {
         console.log(name + " is started with address: "+address+":)");
         request.post(
           global.serverAddress+"/streamServer/hasChanged",
-          JSON.stringify({jason:{name,address}}),
+          { json: { name, address,playState:0 } },
+         
           (err, body, response)  =>{
             //////////
           }
@@ -50,7 +50,7 @@ class StreamCreator {
         console.log(name + " has stoped :(");
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
-          { json: { name, address } },
+          { json: { name, address,playState:0 } },
           (err, body, response) => {
             //////////
           }
@@ -97,13 +97,56 @@ class StreamCreator {
       })
       .run();
   }
-  coding() {
+
+  start() {
+
+
+    console.log("inputs: ",this.inputs)
     this.inputs.forEach(async (i, index) => {
       if (i.dshow === 0)
         this.callFfmpeg(i.address, i.name);
       else this.dShowFfmpeg(i.address, i.name)
     });
   }
+
+stop(){
+
+  /*
+  A simple solution would be to use a running command store and have a way to generate a unique ID for each command:
+
+var runningCommands = {};
+function generateID() {
+  return someUniqueIdentifier;
+}
+Then when creating a command, generate an ID, store it, and remove it when it finishes:
+
+var id = generateID();
+runningCommands[id] = command;
+command.on('end', function() {
+  delete runningCommands[id];
+});
+command.on('error', function() {
+  delete runningCommands[id];
+});
+And finally, add an action to kill a command by its ID:
+
+kill: function(req, res) {
+  var id = req.params('id'); // Retrieve ID from request
+  if (!(id in runningCommands)) {
+   // 404 for example
+  }
+
+  runningCommands[id].kill();
+};
+You may want to add a way for the client to retrieve the list of running jobs along with their ID.
+  */
+
+	stream.ffmpegProc.stdin.write('q');
+
+
+}
+
+
 }
 
 module.exports = StreamCreator;
