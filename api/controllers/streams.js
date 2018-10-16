@@ -157,15 +157,16 @@ let stream_start = async (req, res) => {
     console.error('error: ', e);
     return res.status(500).json({ error: e });
   }
-  let stream_stop=async(req,res)=>{
-    try{
-      var tsCreator=new StreamCreator(inputs)
-      tsCreator.stop()
-      return res.status(200).json({stream:{inputs}})
-    } catch(e){
-      console.error('error: ', e);
-      return res.status(500).json({ error: e });
-    }
-  }
+
 };
-module.exports = { stream_start, getStream };
+let stream_stop=async(req,res)=>{
+  try{
+    var tsCreator=new StreamCreator(inputs)
+    tsCreator.stop()
+    return res.status(200).json({stream:{inputs}})
+  } catch(e){
+    console.error('error: ', e);
+    return res.status(500).json({ error: e });
+  }
+}
+module.exports = { stream_start, stream_stop };
