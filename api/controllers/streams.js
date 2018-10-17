@@ -160,6 +160,8 @@ let stream_start = async (req, res) => {
 
 };
 let stream_stop=async(req,res)=>{
+  const inputs = req.body
+
   try{
     var tsCreator=new StreamCreator(inputs)
     tsCreator.stop()
