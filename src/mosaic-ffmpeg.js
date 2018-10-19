@@ -7,17 +7,20 @@
 var ffmpeg = require('fluent-ffmpeg');
 class Mosaic {
     constructor(inputs) {
-        this.inputs = inputs
+        this.inputs = inputs;
+    this.runningCommands = {};
+
     }
 
-    start() {
-    var command = ffmpeg()
-    // Change this to the desired output resolution  
-    var x = 720, y = 576;
-
-    // var videoInfo = [];
-    var videoInfo=this.inputs
-
+    start(inputs) {
+        var command = ffmpeg()
+        // Change this to the desired output resolution  
+        var x = 720, y = 576;
+        
+        // var videoInfo = [];
+        // var videoInfo=this.inputs
+        var videoInfo=inputs.mosaicInputs
+        console.log("videoInfo: ",videoInfo)
     // Parse arguments
     // var args = process.argv.slice(2);
     // // var args = process.argv.slice(2);
@@ -33,8 +36,11 @@ class Mosaic {
     // });
 
     videoInfo.map((i,index)=>{
+        console.log("i: ",i)
+
         i.command=command.addInput(i.address)
     })
+    console.log("sqrt(videoInfo.length): ",Math.floor(Math.sqrt(videoInfo.length)))
     
         videoInfo[0].coord = { x: 0, y: 0 };
         videoInfo[1].coord = { x: x / 4, y: 0 };
@@ -56,10 +62,10 @@ class Mosaic {
         videoInfo[14].coord = { x: x / 2, y: 3 * y / 4 };
         videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
 
-        // videoInfo[0].coord = { x: 0, y: 0 };
-        // videoInfo[1].coord = { x: x/2, y: 0 };
-        // videoInfo[2].coord = { x: 0, y: y/2 };
-        // videoInfo[3].coord = { x: x/2, y: y/2 };
+        videoInfo[0].coord = { x: 0, y: 0 };
+        videoInfo[1].coord = { x: x/2, y: 0 };
+        videoInfo[2].coord = { x: 0, y: y/2 };
+        videoInfo[3].coord = { x: x/2, y: y/2 };
 
         var complexFilter = [];
         complexFilter.push('nullsrc=size=' + x + 'x' + y + ' [base0]');
@@ -80,24 +86,55 @@ class Mosaic {
             });
         });
 
-        var outFile = 'd:/hls-test/mosaic.m3u8';
+        var outFile = '/Users/shadab/desktop/hls-test/mosaic.m3u8';
+        // var outFile = 'd:/hls-test/mosaic.m3u8';
         // var outFile = 'mosaic.mp4';
 
         command
             .complexFilter(complexFilter, 'base16')
             .save(outFile)
-            .on('start',function(){
-                console.log('started processing');
+    this.runningCommands[id]= command;
+
+            command.on('start',function(){
+                console.log('started processing '+name);
+                request.post(
+                    global.serverAddress + "/streamServer/hasChanged",
+                    {json:{ name, address,id, playState: 1 }},
+            
+                    (err, body, response) => {
+                      //////////
+                    }
+                  )
             })
             .on('error', function (err) {
                 console.log('An error occurred: ' + err.message);
+                delete this.runningCommands[id];
+                console.log(name + " has stoped :(");
+                request.post(
+                  global.serverAddress + "/streamServer/hasChanged",
+                  { json: { id, playState: 0 } },
+                  (err, body, response) => {
+                    //////////
+                    console.log('Cannot process video: ' + err);
+                    //   console.log('Cannot process video: ' + err.message);
+                  }
+                  )
             })
             .on('progress', function (progress) {
                 console.log('... frames: ' + progress.frames);
             })
             .on('end', function () {
                 console.log('Finished processing');
-            });
+                delete this.runningCommands[id];
+
+                console.log(name + " has stoped :(");
+                request.post(
+                  global.serverAddress + "/streamServer/hasChanged",
+                  { json: { id, playState: 0 } },
+                  (err, body, response) => {
+                    //////////
+                  })
+            })
     }
 }
 
