@@ -55,8 +55,8 @@ mosaicConfig=[{id:1, name: 'tv1', address: "http://172.16.16.103:1371" },
 var server = http.createServer()
 
 
-var tsCreator=new StreamCreator(inputs)
-  tsCreator.start()
+// var tsCreator=new StreamCreator()
+//   tsCreator.start(inputs)
 
 
 // var mosaicCreator=new Mosaic(mosaicConfig)
@@ -67,8 +67,8 @@ var tsCreator=new StreamCreator(inputs)
 
 var hls = new HLSServer(server, {
   path: '',     // Base URI to output HLS streams
-  // dir: '/Users/shadab/desktop/hls-test'  // Directory that input files are stored
-  dir: 'D:/hls-test'  // Directory that input files are stored
+  dir: '/Users/shadab/desktop/hls-test'  // Directory that input files are stored
+  // dir: 'D:/hls-test'  // Directory that input files are stored
   // dir: 'public/videos'  // Directory that input files are stored
 })
 

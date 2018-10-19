@@ -143,13 +143,13 @@ const { StreamCreator } = require('../../index');
 
 
 
+var tsCreator = new StreamCreator()
 /*      POST /api/streams/state/change     */
 let stream_start = async (req, res) => {
   const inputs = req.body
   try {
 
-    var tsCreator = new StreamCreator(inputs)
-    tsCreator.start()
+    tsCreator.start(inputs)
 
 
     return res.status(200).json({ stream: { inputs } });
@@ -161,11 +161,11 @@ let stream_start = async (req, res) => {
 };
 let stream_stop=async(req,res)=>{
   const inputs = req.body
-
+  console.log("req",req.body)
   try{
-    var tsCreator=new StreamCreator(inputs)
-    tsCreator.stop()
+    if(tsCreator.stop(inputs.id))
     return res.status(200).json({stream:{inputs}})
+    else return res.status(200).json({stream:{},message:"nothing to stop."})
   } catch(e){
     console.error('error: ', e);
     return res.status(500).json({ error: e });
