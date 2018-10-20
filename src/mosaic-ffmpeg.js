@@ -5,6 +5,8 @@
 //   node ffmpeg-mosaic.js file1.mp2 file2.mp4 file3.mp4 file4.mp4
 //   Generates out.mp4
 var ffmpeg = require('fluent-ffmpeg');
+var request = require("request");
+
 class Mosaic {
     constructor(inputs) {
         this.inputs = inputs;
@@ -19,8 +21,9 @@ class Mosaic {
         
         // var videoInfo = [];
         // var videoInfo=this.inputs
+        var {id,name,address}=inputs
         var videoInfo=inputs.mosaicInputs
-        console.log("videoInfo: ",videoInfo)
+        // console.log("videoInfo: ",inputs)
     // Parse arguments
     // var args = process.argv.slice(2);
     // // var args = process.argv.slice(2);
@@ -36,7 +39,7 @@ class Mosaic {
     // });
 
     videoInfo.map((i,index)=>{
-        console.log("i: ",i)
+        // console.log("i: ",i)
 
         i.command=command.addInput(i.address)
     })
@@ -62,10 +65,6 @@ class Mosaic {
         videoInfo[14].coord = { x: x / 2, y: 3 * y / 4 };
         videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
 
-        videoInfo[0].coord = { x: 0, y: 0 };
-        videoInfo[1].coord = { x: x/2, y: 0 };
-        videoInfo[2].coord = { x: 0, y: y/2 };
-        videoInfo[3].coord = { x: x/2, y: y/2 };
 
         var complexFilter = [];
         complexFilter.push('nullsrc=size=' + x + 'x' + y + ' [base0]');
@@ -79,23 +78,34 @@ class Mosaic {
         });
         // Build Mosaic, block by block
         videoInfo.forEach(function (val, index, array) {
-            console.log('val: ',val)
+            // console.log('val: ',val)
+
             complexFilter.push({
                 filter: 'overlay', options: { shortest: 0, x: val.coord.x, y: val.coord.y },
                 inputs: ['base' + index, 'block' + index], outputs: 'base' + (index + 1)
             });
         });
 
-        var outFile = '/Users/shadab/desktop/hls-test/mosaic.m3u8';
-        // var outFile = 'd:/hls-test/mosaic.m3u8';
-        // var outFile = 'mosaic.mp4';
+        // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
+        var outFile = 'd:/hls-test/'+name+'.m3u8';
 
         command
+        .addOptions([
+            "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
+            "-level 3.0",
+            "-s 720x576", // 720px width, 576px height output video dimensions
+            "-start_number 0", // start the first .ts segment at index 0
+            "-hls_time 2", // 2 second segment duration
+            // '-hls_list_size 0',    // Maxmimum number of playlist entries (0 means all entries/infinite)
+            "-hls_flags delete_segments",
+            "-f hls" // HLS format
+          ])
             .complexFilter(complexFilter, 'base16')
-            .save(outFile)
+            .output(outFile)
     this.runningCommands[id]= command;
-
-            command.on('start',function(){
+    
+    console.log("hiiii")
+    command.on('start',()=>{
                 console.log('started processing '+name);
                 request.post(
                     global.serverAddress + "/streamServer/hasChanged",
@@ -106,8 +116,10 @@ class Mosaic {
                     }
                   )
             })
-            .on('error', function (err) {
+            .on('error',  (err)=> {
                 console.log('An error occurred: ' + err.message);
+                console.log("id: ",id)
+                console.log("this.runningCommands: ",this.runningCommands)
                 delete this.runningCommands[id];
                 console.log(name + " has stoped :(");
                 request.post(
@@ -120,10 +132,10 @@ class Mosaic {
                   }
                   )
             })
-            .on('progress', function (progress) {
+            .on('progress',  (progress)=> {
                 console.log('... frames: ' + progress.frames);
             })
-            .on('end', function () {
+            .on('end',  ()=> {
                 console.log('Finished processing');
                 delete this.runningCommands[id];
 
@@ -134,7 +146,22 @@ class Mosaic {
                   (err, body, response) => {
                     //////////
                   })
-            })
+            }).run();
+    }
+
+    stop(id){
+        if(!this.runningCommands[id]){
+            request.post(
+              global.serverAddress + "/streamServer/hasChanged",
+              { json: { id, playState: 0 } },
+              (err, body, response) => {
+              }
+            );
+            return false;
+          }
+          this.runningCommands[id].kill();
+          // stream.ffmpegProc.stdin.write('q');
+          return true;
     }
 }
 
