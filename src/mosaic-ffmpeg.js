@@ -98,7 +98,9 @@ class Mosaic {
             "-hls_time 2", // 2 second segment duration
             // '-hls_list_size 0',    // Maxmimum number of playlist entries (0 means all entries/infinite)
             "-hls_flags delete_segments",
-            "-f hls" // HLS format
+            "-f hls", // HLS format,
+            "-loop 1",
+            "-hwaccel"
           ])
             .complexFilter(complexFilter, 'base16')
             .output(outFile)
