@@ -45,33 +45,25 @@ class Mosaic {
         })
         console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
 
-        // videoInfo[0].coord = { x: 0, y: 0 };
-        // videoInfo[1].coord = { x: x / 4, y: 0 };
-        // videoInfo[2].coord = { x: x / 2, y: 0 };
-        // videoInfo[3].coord = { x: 3 * x / 4, y: 0 };
-
-        // videoInfo[4].coord = { x: 0, y: y / 4 };
-        // videoInfo[5].coord = { x: x / 4, y: y / 4 };
-        // videoInfo[6].coord = { x: x / 2, y: y / 4 };
-        // videoInfo[7].coord = { x: 3 * x / 4, y: y / 4 };
-
-        // videoInfo[8].coord = { x: 0, y: y / 2 };
-        // videoInfo[9].coord = { x: x / 4, y: y / 2 };
-        // videoInfo[10].coord = { x: x / 2, y: y / 2 };
-        // videoInfo[11].coord = { x: 3 * x / 4, y: y / 2 };
-
-        // videoInfo[12].coord = { x: 0, y: 3 * y / 4 };
-        // videoInfo[13].coord = { x: x / 4, y: 3 * y / 4 };
-        // videoInfo[14].coord = { x: x / 2, y: 3 * y / 4 };
-        // videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
-
         videoInfo[0].coord = { x: 0, y: 0 };
-videoInfo[1].coord = { x: x/2, y: 0 };
-videoInfo[2].coord = { x: 0, y: y/2 };
-videoInfo[3].coord = { x: x/2, y: y/2 };
+        videoInfo[1].coord = { x: x / 4, y: 0 };
+        videoInfo[2].coord = { x: x / 2, y: 0 };
+        videoInfo[3].coord = { x: 3 * x / 4, y: 0 };
 
-        
+        videoInfo[4].coord = { x: 0, y: y / 4 };
+        videoInfo[5].coord = { x: x / 4, y: y / 4 };
+        videoInfo[6].coord = { x: x / 2, y: y / 4 };
+        videoInfo[7].coord = { x: 3 * x / 4, y: y / 4 };
 
+        videoInfo[8].coord = { x: 0, y: y / 2 };
+        videoInfo[9].coord = { x: x / 4, y: y / 2 };
+        videoInfo[10].coord = { x: x / 2, y: y / 2 };
+        videoInfo[11].coord = { x: 3 * x / 4, y: y / 2 };
+
+        videoInfo[12].coord = { x: 0, y: 3 * y / 4 };
+        videoInfo[13].coord = { x: x / 4, y: 3 * y / 4 };
+        videoInfo[14].coord = { x: x / 2, y: 3 * y / 4 };
+        videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
 
 
         var complexFilter = [];
@@ -79,8 +71,8 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
         // Scale each video
         videoInfo.forEach(function (val, index, array) {
             complexFilter.push({
-                // filter: 'setpts=PTS-STARTPTS, scale', options: [x / 4, y / 4],
-                filter: 'setpts=PTS-STARTPTS, scale', options: [x/2, y/2],
+                filter: 'setpts=PTS-STARTPTS, scale', options: [x / 4, y / 4],
+                // filter: 'setpts=PTS-STARTPTS, scale', options: [x/2, y/2],
                 inputs: index + ':v', outputs: 'block' + index
             });
         });
@@ -117,9 +109,7 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
                 "-bufsize 15000k",
                 //"-hwaccel"
             ])
-            .complexFilter(complexFilter, 'base4')
-            // .complexFilter(complexFilter, 'base'+videoInfo.length+1)
-            // .complexFilter(complexFilter, 'base16')
+            .complexFilter(complexFilter, 'base16')
             .output(outFile)
         this.runningCommands[id] = command;
 

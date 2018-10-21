@@ -21,7 +21,7 @@ class StreamCreator {
         "-hls_flags delete_segments",
         "-f hls", // HLS format
         "-loop 1",
-        "-hwaccel"
+        // "-hwaccel"
       ])
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       .output('d:/hls-test/' + name + '.m3u8');
