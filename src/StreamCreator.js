@@ -19,17 +19,13 @@ class StreamCreator {
         "-hls_time 2", // 2 second segment duration
         // '-hls_list_size 0',    // Maxmimum number of playlist entries (0 means all entries/infinite)
         "-hls_flags delete_segments",
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         "-f hls", // HLS format
         "-loop 1",
         // "-hwaccel"
-=======
+
         "-f hls" // HLS format
->>>>>>> parent of 3fca1d1... add -hwaccel
-=======
-        "-f hls" // HLS format
->>>>>>> parent of 3fca1d1... add -hwaccel
+
       ])
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       .output('d:/hls-test/' + name + '.m3u8');
