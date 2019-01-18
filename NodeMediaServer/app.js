@@ -15,8 +15,8 @@ const config = {
     allow_origin: '*'
   },
   trans: {
-    ffmpeg: 'D:/Softwares/ffmpeg-20180828-26dc763-win64-static/ffmpeg-20180828-26dc763-win64-static/bin',
-    // ffmpeg: '/usr/local/bin/ffmpeg',
+    // ffmpeg: 'D:/Softwares/ffmpeg-20180828-26dc763-win64-static/ffmpeg-20180828-26dc763-win64-static/bin',
+    ffmpeg: '/usr/local/bin/ffmpeg',
     tasks: [
       {
         app: 'live',

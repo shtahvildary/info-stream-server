@@ -94,9 +94,9 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
             });
         });
 
-        // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
-        var outFile = 'd:/hls-test/' + name + '.m3u8';
-
+        var outFile = '/Users/shadabtahvildary/desktop/hls-test/'+name+'.m3u8';
+        // var outFile = 'd:/hls-test/' + name + '.m3u8';
+        
         command
             .addOptions([
                 "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
