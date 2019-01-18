@@ -52,8 +52,6 @@ mosaicConfig=[{id:1, name: 'tv1', address: "http://172.16.16.103:1371" },
 { id:14,name: 'pooya', address: "http://172.16.16.103:1384" },
 { id:15,name: 'tamasha', address: "http://172.16.16.103:1385" },
 { id:16,name: 'tv3HD', address: "http://172.16.16.103:1386" },]
-
-
 var server = http.createServer()
 
 
@@ -67,23 +65,19 @@ var server = http.createServer()
 
 
 
-new HLSServer(server, {
+var hls = new HLSServer(server, {
   path: '',     // Base URI to output HLS streams
-  dir: '‎⁨/Users/shadabtahvildary/desktop/hls-test'  // Directory that input files are stored
-  // dir: 'D:/hls-test'  // Directory that input files are stored
+  // dir: '/Users/shadab/desktop/hls-test'  // Directory that input files are stored
+  dir: 'D:/hls-test'  // Directory that input files are stored
   // dir: 'public/videos'  // Directory that input files are stored
 })
+
 function middleware (req, res, next) {
     // set your headers here
-    // console.log("llll",req.body)
     res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.send(200,{"hello":"world"})
     next()
 }
 httpAttach(server, middleware)
-server.listen(8000,()=>{
-
-  console.log(`server is running...`,8000)
-})
-
+server.listen(8000)
+console.log(`server is running...`)
 

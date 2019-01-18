@@ -31,8 +31,8 @@ class StreamCreator {
         "-f hls" // HLS format
 >>>>>>> parent of 3fca1d1... add -hwaccel
       ])
-      .output("/Users/shadabtahvildary/Desktop/hls-Test/" + name + ".m3u8")
-      // .output('d:/hls-test/' + name + '.m3u8');
+      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      .output('d:/hls-test/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
     command.on("start", ()=> {
@@ -93,10 +93,11 @@ class StreamCreator {
         "-hls_flags delete_segments",
         "-f dshow" // direct show format
       ])
+      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
-      // .output('d:/hls-test/' + name + '.m3u8')
-    .output(' /Users/shadabtahvildary/Desktop/hls-Test/files/output/out.m3u8')
-      
+      .output('d:/hls-test/' + name + '.m3u8')
+
       .on("start", function () {
         console.log(name + " is started :)");
       })
