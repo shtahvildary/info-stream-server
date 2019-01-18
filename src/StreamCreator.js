@@ -20,9 +20,13 @@ class StreamCreator {
         // '-hls_list_size 0',    // Maxmimum number of playlist entries (0 means all entries/infinite)
         "-hls_flags delete_segments",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "-f hls", // HLS format
         "-loop 1",
         // "-hwaccel"
+=======
+        "-f hls" // HLS format
+>>>>>>> parent of 3fca1d1... add -hwaccel
 =======
         "-f hls" // HLS format
 >>>>>>> parent of 3fca1d1... add -hwaccel
