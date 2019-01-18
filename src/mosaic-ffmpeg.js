@@ -98,6 +98,7 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
         // var outFile = 'd:/hls-test/' + name + '.m3u8';
         
         command
+<<<<<<< HEAD
             .addOptions([
                 "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
                 "-level 3.0",
@@ -120,6 +121,19 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
             .complexFilter(complexFilter, 'base4')
             // .complexFilter(complexFilter, 'base'+videoInfo.length+1)
             // .complexFilter(complexFilter, 'base16')
+=======
+        .addOptions([
+            "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
+            "-level 3.0",
+            "-s 720x576", // 720px width, 576px height output video dimensions
+            "-start_number 0", // start the first .ts segment at index 0
+            "-hls_time 2", // 2 second segment duration
+            // '-hls_list_size 0',    // Maxmimum number of playlist entries (0 means all entries/infinite)
+            "-hls_flags delete_segments",
+            "-f hls" // HLS format
+          ])
+            .complexFilter(complexFilter, 'base16')
+>>>>>>> parent of 3fca1d1... add -hwaccel
             .output(outFile)
         this.runningCommands[id] = command;
 
