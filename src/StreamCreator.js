@@ -2,8 +2,10 @@ var ffmpeg = require("fluent-ffmpeg");
 var request = require("request");
 
 class StreamCreator {
+  
   constructor() {
     this.runningCommands = {};
+  var  date=new Date();
   }
 
   // https://www.ffmpeg.org/ffmpeg-formats.html#hls-2
@@ -32,7 +34,7 @@ class StreamCreator {
     this.runningCommands[id]= command;
     
     command.on("start", ()=> {
-      console.log(name + " is started with address: " + address + ":)");
+      console.log(name + " is started with address: " + address + ":)"+this.date.getHours());
       request.post(
         global.serverAddress + "/streamServer/hasChanged",
         {json:{ name, address,id, playState: 1 }},
@@ -51,7 +53,7 @@ class StreamCreator {
       // })
       .on('error', (err, stdout, stderr)=> {
         delete this.runningCommands[id];
-        console.log(name + " has stoped :(");
+        console.log(name + " has stoped :("+date.getHours());
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
           { json: { id, playState: 0 } },
@@ -65,7 +67,7 @@ class StreamCreator {
       .on("end", ()=> {
         delete this.runningCommands[id];
 
-        console.log(name + " has stoped :(");
+        console.log(name + " has stoped :("+date.getHours());
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
           { json: { id, playState: 0 } },
@@ -95,7 +97,7 @@ class StreamCreator {
       .output('d:/hls-test/' + name + '.m3u8')
 
       .on("start", function () {
-        console.log(name + " is started :)");
+        console.log(name + " is started :)"+date.getHours());
       })
       .on("progress", function (progress) {
         console.log(name + ': ... frames: ' + progress.frames);
@@ -104,7 +106,7 @@ class StreamCreator {
       }).on('error', function (err, stdout, stderr) {
         console.log('Cannot process video: ' + err.message);
       }).on("end", function () {
-        console.log(name + " has stoped :(");
+        console.log(name + " has stoped :("+date.getHours());
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
           { json: { name, address } },

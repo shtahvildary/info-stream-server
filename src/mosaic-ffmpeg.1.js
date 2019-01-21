@@ -130,7 +130,7 @@ class Mosaic {
                 console.log("id: ", id)
                 console.log("this.runningCommands: ", this.runningCommands)
                 delete this.runningCommands[id];
-                console.log(name + " has stoped :(");
+                console.log(name + " has stoped :("+Date.now().toString());
                 request.post(
                     global.serverAddress + "/streamServer/hasChanged",
                     { json: { id, playState: 0 } },
@@ -148,7 +148,7 @@ class Mosaic {
                 console.log('Finished processing');
                 delete this.runningCommands[id];
 
-                console.log(name + " has stoped :(");
+                console.log(name + " has stoped :("+Date.now().toString());
                 request.post(
                     global.serverAddress + "/streamServer/hasChanged",
                     { json: { id, playState: 0 } },

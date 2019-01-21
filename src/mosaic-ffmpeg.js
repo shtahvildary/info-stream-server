@@ -140,7 +140,7 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
                 console.log("id: ", id)
                 console.log("this.runningCommands: ", this.runningCommands)
                 delete this.runningCommands[id];
-                console.log(name + " has stoped :(");
+                console.log(name + " has stoped :("+Date.now().toString());
                 request.post(
                     global.serverAddress + "/streamServer/hasChanged",
                     { json: { id, playState: 0 } },
@@ -158,7 +158,7 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
                 console.log('Finished processing');
                 delete this.runningCommands[id];
 
-                console.log(name + " has stoped :(");
+                console.log(name + " has stoped :("+Date.now().toString());
                 request.post(
                     global.serverAddress + "/streamServer/hasChanged",
                     { json: { id, playState: 0 } },
