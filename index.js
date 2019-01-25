@@ -10,8 +10,8 @@ const Mosaic = require('./src/mosaic-ffmpeg');
 
 
 
-global.serverAddress = "http://172.16.17.195:5000/api";
-// global.serverAddress = "http://localhost:5000/api";
+// global.serverAddress = "http://172.16.17.195:5000/api";
+global.serverAddress = "http://localhost:5000/api";
 
 
 module.exports = {

@@ -5,7 +5,7 @@ class StreamCreator {
   
   constructor() {
     this.runningCommands = {};
-  var  date=new Date();
+  // var  date=new Date();
   }
 
   // https://www.ffmpeg.org/ffmpeg-formats.html#hls-2
@@ -29,15 +29,15 @@ class StreamCreator {
         "-f hls" // HLS format
 
       ])
-      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
-      .output('d:/hls-test/' + name + '.m3u8');
+      .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      // .output('d:/hls-test/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
     command.on("start", ()=> {
-      console.log(name + " is started with address: " + address + ":)"+this.date.getHours());
+      console.log(name + " is started with address: " + address + ":)"+new Date());
       request.post(
         global.serverAddress + "/streamServer/hasChanged",
-        {json:{ name, address,id, playState: 1 }},
+        {json:{ name, address,id, playState: 1 ,changeStateTime:Date.now()}},
 
         (err, body, response) => {
           //////////
@@ -53,10 +53,10 @@ class StreamCreator {
       // })
       .on('error', (err, stdout, stderr)=> {
         delete this.runningCommands[id];
-        console.log(name + " has stoped :("+date.getHours());
+        console.log(name + " has stoped :("+new Date());
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
-          { json: { id, playState: 0 } },
+          { json: { id, playState: 0 ,changeStateTime:Date.now()} },
           (err, body, response) => {
             //////////
             console.log('Cannot process video: ' + err);
@@ -67,10 +67,10 @@ class StreamCreator {
       .on("end", ()=> {
         delete this.runningCommands[id];
 
-        console.log(name + " has stoped :("+date.getHours());
+        console.log(name + " has stoped :("+new Date());
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
-          { json: { id, playState: 0 } },
+          { json: { id, playState: 0 ,changeStateTime:Date.now()} },
           (err, body, response) => {
             //////////
           }
@@ -97,7 +97,7 @@ class StreamCreator {
       .output('d:/hls-test/' + name + '.m3u8')
 
       .on("start", function () {
-        console.log(name + " is started :)"+date.getHours());
+        console.log(name + " is started :)"+new Date());
       })
       .on("progress", function (progress) {
         console.log(name + ': ... frames: ' + progress.frames);
@@ -106,10 +106,10 @@ class StreamCreator {
       }).on('error', function (err, stdout, stderr) {
         console.log('Cannot process video: ' + err.message);
       }).on("end", function () {
-        console.log(name + " has stoped :("+date.getHours());
+        console.log(name + " has stoped :("+new Date());
         request.post(
           global.serverAddress + "/streamServer/hasChanged",
-          { json: { name, address } },
+          { json: { name, address ,changeStateTime:Date.now()} },
           (err, body, response) => {
             //////////
           }
@@ -129,7 +129,7 @@ class StreamCreator {
     if(!this.runningCommands[id]){
       request.post(
         global.serverAddress + "/streamServer/hasChanged",
-        { json: { id, playState: 0 } },
+        { json: { id, playState: 0 ,changeStateTime:Date.now()} },
         (err, body, response) => {
         }
       );
