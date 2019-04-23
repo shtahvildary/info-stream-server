@@ -16,12 +16,12 @@ ffmpeg -i "http:172.16.16.103:1383" -codec copy -f mp4 -y "out.mp4"
 restream in udp:
 ffmpeg -re -i "http://172.16.16.103:1383" -r 25 -vcodec libx264 -preset ultrafast -tune zerolatency -crf 18 -b:v 500k -bufsize 300k -f mpegts udp://localhost:1234
 
-ffmpeg -re -i "http://172.16.16.103:1383" -codec copy -preset ultrafast -s 320X240 -tune zerolatency -crf 18 -b:v 5k -bufsize 300k -f mpegts udp://172.16.17.159:1234
+ffmpeg -re -i "http://172.16.16.103:1383" -codec copy -preset ultrafast -s 320X240 -tune zerolatency -crf 18 -b:v 5k -bufsize 300k -f mpegts udp://172.16.16.163:1234
 
 
 
 restream over http:
-ffmpeg -re -i "http://172.16.16.103:1383" -codec copy -preset ultrafast -s 320X240  -maxrate 200 -tune zerolatency -crf 18 -b:v 5k -bufsize 300k -listen 1 -f mpegts http://172.16.16.153:8080
+ffmpeg -re -i "http://172.16.16.103:1383" -codec copy -preset ultrafast -s 320X240  -maxrate 200 -tune zerolatency -crf 18 -b:v 5k -bufsize 300k -listen 1 -f mpegts http://172.16.16.163:8080
 
 
 
