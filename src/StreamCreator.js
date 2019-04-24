@@ -29,6 +29,7 @@ class StreamCreator {
         "-f hls" // HLS format
 
       ])
+      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       // .output('d:/hls-test/' + name + '.m3u8');
     this.runningCommands[id]= command;
