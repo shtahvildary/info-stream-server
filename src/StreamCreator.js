@@ -1,3 +1,4 @@
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 var ffmpeg = require("fluent-ffmpeg");
 var request = require("request");
 
@@ -11,7 +12,8 @@ class StreamCreator {
   // https://www.ffmpeg.org/ffmpeg-formats.html#hls-2
 
   callFfmpeg(address, name, id) {
-
+    ffmpeg.setFfmpegPath(ffmpegPath);
+    console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
     var command = ffmpeg(address, { timeout: 432000 })
       .addOptions([
         "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
