@@ -30,7 +30,9 @@ class StreamCreator {
 
       ])
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
-      .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      .output(' /fanavari/hlsFiles/' + name + '.m3u8')
+
       // .output('d:/hls-test/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
@@ -60,7 +62,7 @@ class StreamCreator {
           { json: { id, playState: 0 ,changeStateTime:Date.now()} },
           (err, body, response) => {
             //////////
-            console.log('Cannot process video: ' + err);
+            console.log('Cannot process video, there is an error ' + err);
             //   console.log('Cannot process video: ' + err.message);
           }
           )
