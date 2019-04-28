@@ -9,7 +9,7 @@ const Mosaic = require('./src/mosaic-ffmpeg');
 // const NodeRtmpClient = require('./node_rtmp_client');
 
 
-
+//mdc
 global.serverAddress = "http://172.16.16.164:5000/api";
 // global.serverAddress = "http://localhost:5000/api";
 

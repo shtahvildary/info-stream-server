@@ -67,10 +67,9 @@ var server = http.createServer()
 
 var hls = new HLSServer(server, {
   path: '',     // Base URI to output HLS streams
-  // dir: 'd:' , // Directory that input files are stored
   // dir: '/Users/shadabtahvildary/desktop/hls-test' , // Directory that input files are stored
-  dir: '/fanavari/hlsFiles' , // Directory that input files are stored
-  // dir: 'D:/hls-test' , // Directory that input files are stored
+  // dir: '/fanavari/hlsFiles' , // Directory that input files are stored
+  dir: 'D:/fanavari/hlsFiles' , // Directory that input files are stored
   // dir: 'public/videos'  // Directory that input files are stored
 })
 
