@@ -87,8 +87,8 @@ class Mosaic {
         });
 
         // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
-        // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
-        var outFile = 'd:/fanavari/hlsFiles/' + name + '.m3u8';
+        var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        // var outFile = 'd:/fanavari/hlsFiles/' + name + '.m3u8';
 
         command
             .addOptions([

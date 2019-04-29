@@ -32,8 +32,8 @@ class StreamCreator {
 
       ])
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
-      // .output(' /fanavari/hlsFiles/' + name + '.m3u8')
-      .output('d:/fanavari/hlsFiles/' + name + '.m3u8');
+      .output(' /fanavari/hlsFiles/' + name + '.m3u8')
+      // .output('d:/fanavari/hlsFiles/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
     command.on("start", ()=> {
@@ -97,8 +97,8 @@ class StreamCreator {
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
-      .output('d:/fanavari/hlsFiles/' + name + '.m3u8')
-      // .output(' /fanavari/hlsFiles/' + name + '.m3u8')
+      // .output('d:/fanavari/hlsFiles/' + name + '.m3u8')
+      .output('/fanavari/hlsFiles/' + name + '.m3u8')
 
       .on("start", function () {
         console.log(name + " is started :)"+new Date());

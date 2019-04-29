@@ -4,6 +4,7 @@
 // Usage:
 //   node ffmpeg-mosaic.js file1.mp2 file2.mp4 file3.mp4 file4.mp4
 //   Generates out.mp4
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 var ffmpeg = require('fluent-ffmpeg');
 var request = require("request");
 
@@ -15,6 +16,8 @@ class Mosaic {
     }
 
     start(inputs) {
+        ffmpeg.setFfmpegPath(ffmpegPath);
+    console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
         var command = ffmpeg()
         // Change this to the desired output resolution  
         var x = 720, y = 576;
@@ -95,8 +98,8 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
         });
 
         // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
-        var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
-        // var outFile = ' /fanavari/hlsFiles/' + name + '.m3u8';
+        // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
+        var outFile = ' /fanavari/hlsFiles/' + name + '.m3u8';
 
         command
             .addOptions([
