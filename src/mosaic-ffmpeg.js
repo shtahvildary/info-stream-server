@@ -17,7 +17,7 @@ class Mosaic {
 
     start(inputs) {
         ffmpeg.setFfmpegPath(ffmpegPath);
-    console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
+    // console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
         var command = ffmpeg()
         // Change this to the desired output resolution  
         var x = 720, y = 576;
@@ -46,6 +46,7 @@ class Mosaic {
 
             i.command = command.addInput(i.address)
         })
+        var a=Math.floor(Math.sqrt(videoInfo.length))
         console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
 
         // videoInfo[0].coord = { x: 0, y: 0 };
@@ -67,11 +68,16 @@ class Mosaic {
         // videoInfo[13].coord = { x: x / 4, y: 3 * y / 4 };
         // videoInfo[14].coord = { x: x / 2, y: 3 * y / 4 };
         // videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
+        
 
         videoInfo[0].coord = { x: 0, y: 0 };
-videoInfo[1].coord = { x: x/2, y: 0 };
-videoInfo[2].coord = { x: 0, y: y/2 };
-videoInfo[3].coord = { x: x/2, y: y/2 };
+videoInfo[1].coord = { x: x/4, y: 0 };
+videoInfo[2].coord = { x: x/2, y: 0 };
+videoInfo[3].coord = { x: 3*x/4, y: 0 };
+videoInfo[4].coord = { x: 0, y: y/2 };
+videoInfo[5].coord = { x: x/4, y: y/2 };
+videoInfo[6].coord = { x: x/2, y: y/2 };
+videoInfo[7].coord = { x: 3*x/4, y: y/2 };
 
         
 
@@ -89,8 +95,6 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
         });
         // Build Mosaic, block by block
         videoInfo.forEach(function (val, index, array) {
-            // console.log('val: ',val)
-
             complexFilter.push({
                 filter: 'overlay', options: { shortest: 0, x: val.coord.x, y: val.coord.y },
                 inputs: ['base' + index, 'block' + index], outputs: 'base' + (index + 1)
@@ -121,13 +125,12 @@ videoInfo[3].coord = { x: x/2, y: y/2 };
                 "-bufsize 15000k",
                 //"-hwaccel"
             ])
-            .complexFilter(complexFilter, 'base4')
-            // .complexFilter(complexFilter, 'base'+videoInfo.length+1)
+            // .complexFilter(complexFilter, 'base4')
+            .complexFilter(complexFilter, 'base'+(videoInfo.length))
             // .complexFilter(complexFilter, 'base16')
             .output(outFile)
         this.runningCommands[id] = command;
 
-        console.log("hiiii")
         command.on('start', () => {
             console.log('started processing ' + name);
             request.post(

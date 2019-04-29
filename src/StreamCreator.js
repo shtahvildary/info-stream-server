@@ -13,7 +13,7 @@ class StreamCreator {
 
   callFfmpeg(address, name, id) {
     ffmpeg.setFfmpegPath(ffmpegPath);
-    console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
+    // console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
     var command = ffmpeg(address, { timeout: 432000 })
       .addOptions([
         "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
@@ -62,7 +62,7 @@ class StreamCreator {
           { json: { id, playState: 0 ,changeStateTime:Date.now()} },
           (err, body, response) => {
             //////////
-            console.log('Cannot process video, there is an error ' + err);
+            console.log('Cannot process video, ' + err);
             //   console.log('Cannot process video: ' + err.message);
           }
           )

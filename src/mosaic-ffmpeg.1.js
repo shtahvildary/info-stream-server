@@ -114,7 +114,7 @@ class Mosaic {
             .output(outFile)
         this.runningCommands[id] = command;
 
-        console.log("hiiii")
+        
         command.on('start', () => {
             console.log('started processing ' + name);
             request.post(
