@@ -40,11 +40,13 @@ class Mosaic {
         //     });
         //     command = command.addInput(filename);
         // });
-
+var address
         videoInfo.map((i, index) => {
             // console.log("i: ",i)
-
-            i.command = command.addInput(i.address)
+// address="D:/fanavari/hlsFiles/"+i.name+".m3u8"
+address="/fanavari/hlsFiles/"+i.name+".m3u8"
+            i.command = command.addInput(address)
+            // i.command = command.addInput(i.address)
         })
         var a=Math.floor(Math.sqrt(videoInfo.length))
         console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
@@ -102,8 +104,8 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
         });
 
         // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
-        // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
-        var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
+        // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
 
         command
             .addOptions([
@@ -123,6 +125,8 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
                 "-minrate 3000k",
                 "-maxrate 3000k",
                 "-bufsize 15000k",
+        // "-preset: v ultrafast", //to reduce cpu usage
+
                 //"-hwaccel"
             ])
             // .complexFilter(complexFilter, 'base4')
@@ -159,7 +163,7 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
                 )
             })
             .on('progress', (progress) => {
-                console.log('... frames: ' + progress.frames);
+                // console.log('... frames: ' + progress.frames);
             })
             .on('end', () => {
                 console.log('Finished processing');

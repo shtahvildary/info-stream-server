@@ -27,9 +27,7 @@ class StreamCreator {
         "-f hls", // HLS format
         "-loop 1",
         // "-hwaccel"
-
-        "-f hls" // HLS format
-
+        // "-preset: v ultrafast", //to reduce cpu usage
       ])
       // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
       .output('/fanavari/hlsFiles/' + name + '.m3u8')
@@ -104,7 +102,7 @@ class StreamCreator {
         console.log(name + " is started :)"+new Date());
       })
       .on("progress", function (progress) {
-        console.log(name + ': ... frames: ' + progress.frames);
+        // console.log(name + ': ... frames: ' + progress.frames);
       }).on('stderr', function (stderrLine) {
         console.log('Stderr output: ' + stderrLine);
       }).on('error', function (err, stdout, stderr) {

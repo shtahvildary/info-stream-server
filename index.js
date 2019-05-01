@@ -62,7 +62,7 @@ app.use(function (req, res, next) {
 app.use((err,req,res,next)=>{
   if(!err) return res.validSend(201,{});
   if(!err.status)err.status=500;
-  return res.status(err.status).json({error:"hiiii"+err.message})
+  return res.status(err.status).json({error:"error: "+err.message})
 })
 
 const port = process.env.API_PORT || 8001;
