@@ -104,8 +104,8 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
         });
 
         // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
-        var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
-        // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
+        var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
 
         command
             .addOptions([
