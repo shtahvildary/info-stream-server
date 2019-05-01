@@ -44,9 +44,10 @@ var address
         videoInfo.map((i, index) => {
             // console.log("i: ",i)
 // address="D:/fanavari/hlsFiles/"+i.name+".m3u8"
-address="/fanavari/hlsFiles/"+i.name+".m3u8"
-            i.command = command.addInput(address)
-            // i.command = command.addInput(i.address)
+// address="/fanavari/hlsFiles/"+i.name+".m3u8"
+// address="http://"+i.streamServer+":8000/"+i.name+".m3u8"
+            // i.command = command.addInput(address)
+            i.command = command.addInput(i.address)
         })
         var a=Math.floor(Math.sqrt(videoInfo.length))
         console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
@@ -91,7 +92,8 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
         videoInfo.forEach(function (val, index, array) {
             complexFilter.push({
                 // filter: 'setpts=PTS-STARTPTS, scale', options: [x / 4, y / 4],
-                filter: 'setpts=PTS-STARTPTS, scale', options: [x/2, y/2],
+                filter: 'setpts=PTS-STARTPTS, scale', options: [x/4, y/2
+                ],
                 inputs: index + ':v', outputs: 'block' + index
             });
         });
@@ -104,8 +106,8 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
         });
 
         // var outFile = '/Users/shadab/desktop/hls-test/'+name+'.m3u8';
-        // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
-        var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
+        // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
 
         command
             .addOptions([
