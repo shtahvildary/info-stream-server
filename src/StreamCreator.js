@@ -29,9 +29,9 @@ class StreamCreator {
         // "-hwaccel"
         // "-preset: v ultrafast", //to reduce cpu usage
       ])
-      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
+      .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
       // .output('/fanavari/hlsFiles/' + name + '.m3u8')
-      .output('d:/fanavari/hlsFiles/' + name + '.m3u8');
+      // .output('d:/fanavari/hlsFiles/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
     command.on("start", ()=> {
@@ -92,10 +92,10 @@ class StreamCreator {
         "-hls_flags delete_segments",
         "-f dshow" // direct show format
       ])
-      // .output("/Users/shadab/Desktop/hls-test/" + name + ".m3u8")
-      // ]).output('/Users/shadab/Desktop/hls-test/out.m3u8').on('start',startCallback).on('end', endCallback).run()
+      .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
+      // ]).output('/Users/shadabtahvildary/Desktop/hlsFiles/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
-      .output('d:/fanavari/hlsFiles/' + name + '.m3u8')
+      // .output('d:/fanavari/hlsFiles/' + name + '.m3u8')
       // .output('/fanavari/hlsFiles/' + name + '.m3u8')
 
       .on("start", function () {
