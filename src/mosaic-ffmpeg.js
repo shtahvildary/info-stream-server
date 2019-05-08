@@ -16,6 +16,7 @@ class Mosaic {
     }
 
     start(inputs) {
+        console.log("inputs:::::::",inputs)
         ffmpeg.setFfmpegPath(ffmpegPath);
     // console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
         var command = ffmpeg()
@@ -41,16 +42,19 @@ class Mosaic {
         //     command = command.addInput(filename);
         // });
 var address
+var xMosaic,yMosaic
         videoInfo.map((i, index) => {
+            console.log("index,")
             // console.log("i: ",i)
 // address="D:/fanavari/hlsFiles/"+i.name+".m3u8"
 // address="/fanavari/hlsFiles/"+i.name+".m3u8"
 // address="http://"+i.streamServer+":8000/"+i.name+".m3u8"
             // i.command = command.addInput(address)
             i.command = command.addInput(i.address)
+            i.coord={x:index*x/i.xMosaic,y:index*y/i.yMosaic}
         })
-        var a=Math.floor(Math.sqrt(videoInfo.length))
-        console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
+        // var a=Math.floor(Math.sqrt(videoInfo.length))
+        // console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
 
         // videoInfo[0].coord = { x: 0, y: 0 };
         // videoInfo[1].coord = { x: x / 4, y: 0 };
@@ -73,16 +77,16 @@ var address
         // videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
         
 
-        videoInfo[0].coord = { x: 0, y: 0 };
-videoInfo[1].coord = { x: x/4, y: 0 };
-videoInfo[2].coord = { x: x/2, y: 0 };
-videoInfo[3].coord = { x: 3*x/4, y: 0 };
-videoInfo[4].coord = { x: 0, y: y/2 };
-videoInfo[5].coord = { x: x/4, y: y/2 };
-videoInfo[6].coord = { x: x/2, y: y/2 };
-videoInfo[7].coord = { x: 3*x/4, y: y/2 };
+//         videoInfo[0].coord = { x: 0, y: 0 };
+// videoInfo[1].coord = { x: x/4, y: 0 };
+// videoInfo[2].coord = { x: x/2, y: 0 };
+// videoInfo[3].coord = { x: 3*x/4, y: 0 };
+// videoInfo[4].coord = { x: 0, y: y/2 };
+// videoInfo[5].coord = { x: x/4, y: y/2 };
+// videoInfo[6].coord = { x: x/2, y: y/2 };
+// videoInfo[7].coord = { x: 3*x/4, y: y/2 };
 
-        
+ console.log("videoInfo: ",videoInfo)       
 
 
 
@@ -105,8 +109,8 @@ videoInfo[7].coord = { x: 3*x/4, y: y/2 };
             });
         });
 
-        var outFile = '/Users/shadabtahvildary/desktop/hlsFiles/'+name+'.m3u8';
-        // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
+        // var outFile = '/Users/shadabtahvildary/desktop/hlsFiles/'+name+'.m3u8';
+        var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
         // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
 
         command
