@@ -16,7 +16,7 @@ class Mosaic {
     }
 
     start(inputs) {
-        console.log("inputs:::::::",inputs)
+        // console.log("inputs:::::::",inputs)
         ffmpeg.setFfmpegPath(ffmpegPath);
     // console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
         var command = ffmpeg()
@@ -42,76 +42,44 @@ class Mosaic {
         //     command = command.addInput(filename);
         // });
 var address
-var xMosaic,yMosaic
-        videoInfo.map((i, index) => {
-            console.log("index,")
-            // console.log("i: ",i)
-// address="D:/fanavari/hlsFiles/"+i.name+".m3u8"
-// address="/fanavari/hlsFiles/"+i.name+".m3u8"
-// address="http://"+i.streamServer+":8000/"+i.name+".m3u8"
-            // i.command = command.addInput(address)
-            i.command = command.addInput(i.address)
-            i.coord={x:index*x/i.xMosaic,y:index*y/i.yMosaic}
-        })
-        // var a=Math.floor(Math.sqrt(videoInfo.length))
-        // console.log("sqrt(videoInfo.length): ", Math.floor(Math.sqrt(videoInfo.length)))
+var {mosaicDimensions}=inputs
 
-        // videoInfo[0].coord = { x: 0, y: 0 };
-        // videoInfo[1].coord = { x: x / 4, y: 0 };
-        // videoInfo[2].coord = { x: x / 2, y: 0 };
-        // videoInfo[3].coord = { x: 3 * x / 4, y: 0 };
-
-        // videoInfo[4].coord = { x: 0, y: y / 4 };
-        // videoInfo[5].coord = { x: x / 4, y: y / 4 };
-        // videoInfo[6].coord = { x: x / 2, y: y / 4 };
-        // videoInfo[7].coord = { x: 3 * x / 4, y: y / 4 };
-
-        // videoInfo[8].coord = { x: 0, y: y / 2 };
-        // videoInfo[9].coord = { x: x / 4, y: y / 2 };
-        // videoInfo[10].coord = { x: x / 2, y: y / 2 };
-        // videoInfo[11].coord = { x: 3 * x / 4, y: y / 2 };
-
-        // videoInfo[12].coord = { x: 0, y: 3 * y / 4 };
-        // videoInfo[13].coord = { x: x / 4, y: 3 * y / 4 };
-        // videoInfo[14].coord = { x: x / 2, y: 3 * y / 4 };
-        // videoInfo[15].coord = { x: 3 * x / 4, y: 3 * y / 4 };
-        
-
-//         videoInfo[0].coord = { x: 0, y: 0 };
-// videoInfo[1].coord = { x: x/4, y: 0 };
-// videoInfo[2].coord = { x: x/2, y: 0 };
-// videoInfo[3].coord = { x: 3*x/4, y: 0 };
-// videoInfo[4].coord = { x: 0, y: y/2 };
-// videoInfo[5].coord = { x: x/4, y: y/2 };
-// videoInfo[6].coord = { x: x/2, y: y/2 };
-// videoInfo[7].coord = { x: 3*x/4, y: y/2 };
-
- console.log("videoInfo: ",videoInfo)       
-
-
+var index=0;
+for(var j=0;j<=y-y/mosaicDimensions.y ;j+=y/mosaicDimensions.y)
+for(var i=0;i<=x-x/mosaicDimensions.x ;i+=x/mosaicDimensions.x)
+{
+    // address="D:/fanavari/hlsFiles/"+videoInfo[index].name+".m3u8"
+    // address="/fanavari/hlsFiles/"+videoInfo[index].name+".m3u8"
+    // address="http://"+videoInfo[index].streamServer+":8000/"+videoInfo[index].name+".m3u8"
+            videoInfo[index].command=command.addInput(videoInfo[index].address)
+            videoInfo[index].coord={x:i,y:j}
+            index++
+        }
+       
 
         var complexFilter = [];
         complexFilter.push('nullsrc=size=' + x + 'x' + y + ' [base0]');
         // Scale each video
         videoInfo.forEach(function (val, index, array) {
             complexFilter.push({
-                // filter: 'setpts=PTS-STARTPTS, scale', options: [x / 4, y / 4],
-                filter: 'setpts=PTS-STARTPTS, scale', options: [x/4, y/2
-                ],
+                filter: 'setpts=PTS-STARTPTS, scale', options: [x/mosaicDimensions.x, y/mosaicDimensions.y],
                 inputs: index + ':v', outputs: 'block' + index
             });
         });
         // Build Mosaic, block by block
         videoInfo.forEach(function (val, index, array) {
+            console.log("VVAAAALLLL:",val.coord)
             complexFilter.push({
                 filter: 'overlay', options: { shortest: 0, x: val.coord.x, y: val.coord.y },
                 inputs: ['base' + index, 'block' + index], outputs: 'base' + (index + 1)
             });
+            console.log("val 2222222:",val)
+
         });
 
         // var outFile = '/Users/shadabtahvildary/desktop/hlsFiles/'+name+'.m3u8';
-        var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
-        // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
+        var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
 
         command
             .addOptions([

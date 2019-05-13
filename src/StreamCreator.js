@@ -29,8 +29,8 @@ class StreamCreator {
         // "-hwaccel"
         // "-preset: v ultrafast", //to reduce cpu usage
       ])
-      .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
-      // .output('/fanavari/hlsFiles/' + name + '.m3u8')
+      // .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
+      .output('/fanavari/hlsFiles/' + name + '.m3u8')
       // .output('d:/fanavari/hlsFiles/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
@@ -92,11 +92,11 @@ class StreamCreator {
         "-hls_flags delete_segments",
         "-f dshow" // direct show format
       ])
-      .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
+      // .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
       // ]).output('/Users/shadabtahvildary/Desktop/hlsFiles/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
       // .output('d:/fanavari/hlsFiles/' + name + '.m3u8')
-      // .output('/fanavari/hlsFiles/' + name + '.m3u8')
+      .output('/fanavari/hlsFiles/' + name + '.m3u8')
 
       .on("start", function () {
         console.log(name + " is started :)"+new Date());
