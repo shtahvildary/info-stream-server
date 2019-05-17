@@ -1,6 +1,7 @@
 const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
 var ffmpeg = require("fluent-ffmpeg");
 var request = require("request");
+var os = require('os');
 
 class StreamCreator {
   
@@ -12,6 +13,12 @@ class StreamCreator {
   // https://www.ffmpeg.org/ffmpeg-formats.html#hls-2
 
   callFfmpeg(address, name, id) {
+    
+    var path;
+    if(os.type=="Darwin") path="/Users/shadabtahvildary/Desktop/hlsFiles/";
+    else if(os.type=="Linux") path="/fanavari/hlsFiles/";
+    else path="d:/fanavari/hlsFiles/";
+
     ffmpeg.setFfmpegPath(ffmpegPath);
     // console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
     var command = ffmpeg(address, { timeout: 432000 })
@@ -30,7 +37,8 @@ class StreamCreator {
         // "-preset: v ultrafast", //to reduce cpu usage
       ])
       // .output("/Users/shadabtahvildary/Desktop/hlsFiles/" + name + ".m3u8")
-      .output('/fanavari/hlsFiles/' + name + '.m3u8')
+      .output(path + name + '.m3u8')
+      // .output('/fanavari/hlsFiles/' + name + '.m3u8')
       // .output('d:/fanavari/hlsFiles/' + name + '.m3u8');
     this.runningCommands[id]= command;
     
@@ -81,6 +89,12 @@ class StreamCreator {
   }
 
   dShowFfmpeg(address, name) {
+    var path;
+    if(os.type=="Darwin") path="/Users/shadabtahvildary/Desktop/hlsFiles/";
+    else if(os.type=="Linux") path="/fanavari/hlsFiles/";
+    else path="d:/fanavari/hlsFiles/";
+    console.log("hls files path: ",path)
+
     ffmpeg(address, { timeout: 432000 })
       .addOptions([
         "-profile:v baseline", // baseline profile (level 3.0) for H264 video codec
@@ -96,7 +110,8 @@ class StreamCreator {
       // ]).output('/Users/shadabtahvildary/Desktop/hlsFiles/out.m3u8').on('start',startCallback).on('end', endCallback).run()
       // ])
       // .output('d:/fanavari/hlsFiles/' + name + '.m3u8')
-      .output('/fanavari/hlsFiles/' + name + '.m3u8')
+      // .output('/fanavari/hlsFiles/' + name + '.m3u8')
+      .output(path + name + '.m3u8')
 
       .on("start", function () {
         console.log(name + " is started :)"+new Date());

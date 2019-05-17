@@ -16,6 +16,11 @@ class Mosaic {
     }
 
     start(inputs) {
+        var path;
+        if(os.type=="Darwin") path="/Users/shadabtahvildary/Desktop/hlsFiles/";
+        else if(os.type=="Linux") path="/fanavari/hlsFiles/";
+        else path="d:/fanavari/hlsFiles/";
+        
         // console.log("inputs:::::::",inputs)
         ffmpeg.setFfmpegPath(ffmpegPath);
     // console.log("ffmpeg path:",ffmpegPath,ffmpeg.path, ffmpeg.version);
@@ -48,6 +53,7 @@ var index=0;
 for(var j=0;j<=y-y/mosaicDimensions.y ;j+=y/mosaicDimensions.y)
 for(var i=0;i<=x-x/mosaicDimensions.x ;i+=x/mosaicDimensions.x)
 {
+    // address=path+videoInfo[index].name+".m3u8"
     // address="D:/fanavari/hlsFiles/"+videoInfo[index].name+".m3u8"
     // address="/fanavari/hlsFiles/"+videoInfo[index].name+".m3u8"
     // address="http://"+videoInfo[index].streamServer+":8000/"+videoInfo[index].name+".m3u8"
@@ -68,18 +74,19 @@ for(var i=0;i<=x-x/mosaicDimensions.x ;i+=x/mosaicDimensions.x)
         });
         // Build Mosaic, block by block
         videoInfo.forEach(function (val, index, array) {
-            console.log("VVAAAALLLL:",val.coord)
+            
             complexFilter.push({
                 filter: 'overlay', options: { shortest: 0, x: val.coord.x, y: val.coord.y },
                 inputs: ['base' + index, 'block' + index], outputs: 'base' + (index + 1)
             });
-            console.log("val 2222222:",val)
+         
 
         });
 
         // var outFile = '/Users/shadabtahvildary/desktop/hlsFiles/'+name+'.m3u8';
         // var outFile = 'D:/fanavari/hlsFiles/' + name + '.m3u8'; 
-        var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        // var outFile = '/fanavari/hlsFiles/' + name + '.m3u8';
+        var outFile = path + name + '.m3u8';
 
         command
             .addOptions([
