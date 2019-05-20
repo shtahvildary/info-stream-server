@@ -15,6 +15,7 @@ class StreamCreator {
   callFfmpeg(address, name, id) {
     
     var path;
+    console.log("os type: ",os.type)
     if(os.type=="Darwin") path="/Users/shadabtahvildary/Desktop/hlsFiles/";
     else if(os.type=="Linux") path="/fanavari/hlsFiles/";
     else path="d:/fanavari/hlsFiles/";
