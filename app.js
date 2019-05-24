@@ -1,3 +1,4 @@
+var env=require("./env")
 var httpAttach = require('http-attach') // useful module for attaching middlewares
 var HLSServer = require('hls-server')
 var http = require('http')
